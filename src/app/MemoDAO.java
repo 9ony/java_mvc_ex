@@ -12,10 +12,18 @@ public class MemoDAO {
 	
 	public int insertMemo(MemoVO memo) throws SQLException{
 		try {
-			con=DBUtil.getCon();
+			con =DBUtil.getCon();
+			String sql = "insert into memo(idx,name,msg,wdate)"
+					+ " values(memo_seq.nextval,?,?,sysdate)";
+			ps = con.prepareStatement(sql);
 			
-			return 0;
-		}finally {
+			ps.setString(1, memo.getName());
+			ps.setString(2, memo.getMsg());
+			
+			int n = ps.executeUpdate();
+			
+			return n;
+		} finally{
 			close();
 		}
 	}
