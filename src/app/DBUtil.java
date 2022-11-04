@@ -2,6 +2,7 @@ package app;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 public class DBUtil {
 	static String url="jdbc:oracle:thin:@localhost:1521:XE";
 	static String user="scott", pwd="tiger";
